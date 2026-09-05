@@ -1,0 +1,948 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Spinny - Profile</title>
+
+    <!-- Bootstrap CSS -->
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+        rel="stylesheet"
+    >
+
+    <!-- Bootstrap Icons -->
+    <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+    >
+
+    <style>
+        body {
+            background-color: #f5f5f5;
+            font-family: Arial, sans-serif;
+        }
+
+        /* Navbar */
+        .navbar {
+            background-color: #ffffff;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+        }
+
+        .navbar-brand {
+            font-size: 28px;
+            font-weight: bold;
+            color: #111 !important;
+        }
+
+        .navbar-brand span {
+            color: #e53935;
+        }
+
+        .nav-link {
+            color: #333 !important;
+            font-weight: 500;
+        }
+
+        .profile-wrapper {
+            margin-top: 30px;
+            margin-bottom: 40px;
+        }
+
+        /* Left Sidebar */
+        .sidebar {
+            background: #ffffff;
+            border-radius: 12px;
+            padding: 15px 10px;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+            min-height: 600px;
+        }
+
+        .sidebar-title {
+            font-size: 20px;
+            font-weight: bold;
+            padding: 15px;
+            margin-bottom: 10px;
+        }
+
+        .sidebar-menu {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .sidebar-menu li {
+            margin-bottom: 5px;
+        }
+
+        .sidebar-menu button {
+            width: 100%;
+            border: none;
+            background: transparent;
+            padding: 13px 15px;
+            text-align: left;
+            border-radius: 8px;
+            font-size: 15px;
+            color: #333;
+            transition: 0.2s;
+        }
+
+        .sidebar-menu button:hover,
+        .sidebar-menu button.active {
+            background-color: #111;
+            color: white;
+        }
+
+        .logout-btn {
+            color: #dc3545 !important;
+        }
+
+        .logout-btn:hover {
+            background-color: #dc3545 !important;
+            color: white !important;
+        }
+
+        /* Right Content */
+        .content-area {
+            background: #ffffff;
+            border-radius: 12px;
+            padding: 30px;
+            min-height: 600px;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+        }
+
+        /* Profile */
+        .profile-section {
+            text-align: center;
+            padding-bottom: 30px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .profile-image {
+            width: 110px;
+            height: 110px;
+            border-radius: 50%;
+            background: #eeeeee;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 15px;
+            font-size: 50px;
+            color: #777;
+        }
+
+        .profile-name {
+            font-size: 25px;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .profile-email {
+            color: #777;
+            margin-bottom: 20px;
+        }
+
+        /* Summary */
+        .summary-title {
+            margin-top: 30px;
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
+
+        .summary-card {
+            border: none;
+            border-radius: 12px;
+            padding: 20px;
+            height: 100%;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+            background: #fafafa;
+        }
+
+        .summary-icon {
+            font-size: 30px;
+            margin-bottom: 10px;
+        }
+
+        .summary-number {
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .summary-label {
+            color: #777;
+        }
+
+        /* Content headings */
+        .content-heading {
+            font-weight: bold;
+            margin-bottom: 25px;
+        }
+
+        .detail-card {
+            background: #f8f8f8;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 15px;
+        }
+
+        .detail-label {
+            color: #777;
+            font-size: 14px;
+        }
+
+        .detail-value {
+            font-weight: 600;
+            font-size: 16px;
+        }
+
+        .empty-message {
+            text-align: center;
+            padding: 70px 20px;
+            color: #777;
+        }
+
+        .empty-message i {
+            font-size: 55px;
+            margin-bottom: 15px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .sidebar {
+                min-height: auto;
+                margin-bottom: 20px;
+            }
+
+            .content-area {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- ================= NAVBAR ================= -->
+
+<nav class="navbar navbar-expand-lg">
+    <div class="container">
+
+        <a class="navbar-brand" href="#">
+            spin<span>ny</span>
+        </a>
+
+        <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarMenu"
+        >
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarMenu">
+
+            <ul class="navbar-nav ms-auto">
+
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Buy Car</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Sell Car</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Finance</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="#">About Us</a>
+                </li>
+
+            </ul>
+
+        </div>
+    </div>
+</nav>
+
+
+<!-- ================= PROFILE PAGE ================= -->
+
+<div class="container profile-wrapper">
+
+    <div class="row g-4">
+
+        <!-- ================= LEFT ASIDE ================= -->
+
+        <aside class="col-lg-3">
+
+            <div class="sidebar">
+
+                <div class="sidebar-title">
+                    My Account
+                </div>
+
+                <ul class="sidebar-menu">
+
+                    <li>
+                        <button
+                            class="menu-btn active"
+                            onclick="showSection('dashboard', this)"
+                        >
+                            <i class="bi bi-grid me-2"></i>
+                            Dashboard
+                        </button>
+                    </li>
+
+                    <li>
+                        <button
+                            class="menu-btn"
+                            onclick="showSection('personal', this)"
+                        >
+                            <i class="bi bi-person me-2"></i>
+                            Personal Details
+                        </button>
+                    </li>
+
+                    <li>
+                        <button
+                            class="menu-btn"
+                            onclick="showSection('favourite', this)"
+                        >
+                            <i class="bi bi-heart me-2"></i>
+                            Favourite
+                        </button>
+                    </li>
+
+                    <li>
+                        <button
+                            class="menu-btn"
+                            onclick="showSection('recent', this)"
+                        >
+                            <i class="bi bi-clock-history me-2"></i>
+                            Recently Viewed
+                        </button>
+                    </li>
+
+                    <li>
+                        <button
+                            class="menu-btn"
+                            onclick="showSection('testdrive', this)"
+                        >
+                            <i class="bi bi-car-front me-2"></i>
+                            Test Drive Booking
+                        </button>
+                    </li>
+
+                    <li>
+                        <button
+                            class="menu-btn"
+                            onclick="showSection('emi', this)"
+                        >
+                            <i class="bi bi-calculator me-2"></i>
+                            EMI Calculation
+                        </button>
+                    </li>
+
+                    <li>
+                        <button
+                            class="menu-btn"
+                            onclick="showSection('settings', this)"
+                        >
+                            <i class="bi bi-gear me-2"></i>
+                            Settings
+                        </button>
+                    </li>
+
+                    <li>
+                        <button
+                            class="menu-btn logout-btn"
+                            onclick="logout()"
+                        >
+                            <i class="bi bi-box-arrow-right me-2"></i>
+                            Logout
+                        </button>
+                    </li>
+
+                </ul>
+
+            </div>
+
+        </aside>
+
+
+        <!-- ================= RIGHT ASIDE ================= -->
+
+        <aside class="col-lg-9">
+
+            <div class="content-area">
+
+                <!-- ================= DASHBOARD ================= -->
+
+                <section id="dashboard">
+
+                    <div class="profile-section">
+
+                        <div class="profile-image">
+                            <i class="bi bi-person"></i>
+                        </div>
+
+                        <div
+                            class="profile-name"
+                            id="profileName"
+                        >
+                            Pooja B
+                        </div>
+
+                        <div
+                            class="profile-email"
+                            id="profileEmail"
+                        >
+                            pooja@gmail.com
+                        </div>
+
+                        <button
+                            class="btn btn-dark"
+                            onclick="showSection('personal')"
+                        >
+                            <i class="bi bi-pencil me-2"></i>
+                            Edit Profile
+                        </button>
+
+                    </div>
+
+
+                    <!-- QUICK SUMMARY -->
+
+                    <h4 class="summary-title">
+                        Quick Summary
+                    </h4>
+
+                    <div class="row g-4">
+
+                        <!-- Favourite -->
+
+                        <div class="col-md-6">
+
+                            <div class="summary-card">
+
+                                <div class="summary-icon">
+                                    <i class="bi bi-heart"></i>
+                                </div>
+
+                                <div
+                                    class="summary-number"
+                                    id="favouriteCount"
+                                >
+                                    12
+                                </div>
+
+                                <div class="summary-label">
+                                    Favourite
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- Recently Viewed -->
+
+                        <div class="col-md-6">
+
+                            <div class="summary-card">
+
+                                <div class="summary-icon">
+                                    <i class="bi bi-clock-history"></i>
+                                </div>
+
+                                <div
+                                    class="summary-number"
+                                    id="recentCount"
+                                >
+                                    8
+                                </div>
+
+                                <div class="summary-label">
+                                    Recently Viewed
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- Test Drives -->
+
+                        <div class="col-md-6">
+
+                            <div class="summary-card">
+
+                                <div class="summary-icon">
+                                    <i class="bi bi-car-front"></i>
+                                </div>
+
+                                <div
+                                    class="summary-number"
+                                    id="testDriveCount"
+                                >
+                                    3
+                                </div>
+
+                                <div class="summary-label">
+                                    Test Drives
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- EMI -->
+
+                        <div class="col-md-6">
+
+                            <div class="summary-card">
+
+                                <div class="summary-icon">
+                                    <i class="bi bi-calculator"></i>
+                                </div>
+
+                                <div
+                                    class="summary-number"
+                                    id="emiCount"
+                                >
+                                    2
+                                </div>
+
+                                <div class="summary-label">
+                                    EMI Calculations
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </section>
+
+
+                <!-- ================= PERSONAL DETAILS ================= -->
+
+                <section id="personal" class="d-none">
+
+                    <h3 class="content-heading">
+                        Personal Details
+                    </h3>
+
+                    <div class="detail-card">
+
+                        <div class="detail-label">
+                            Full Name
+                        </div>
+
+                        <div
+                            class="detail-value"
+                            id="personalName"
+                        >
+                            Pooja B
+                        </div>
+
+                    </div>
+
+
+                    <div class="detail-card">
+
+                        <div class="detail-label">
+                            Email
+                        </div>
+
+                        <div
+                            class="detail-value"
+                            id="personalEmail"
+                        >
+                            pooja@gmail.com
+                        </div>
+
+                    </div>
+
+
+                    <div class="detail-card">
+
+                        <div class="detail-label">
+                            Mobile Number
+                        </div>
+
+                        <div
+                            class="detail-value"
+                            id="personalPhone"
+                        >
+                            Not available
+                        </div>
+
+                    </div>
+
+
+                    <button
+                        class="btn btn-dark"
+                        onclick="editProfile()"
+                    >
+                        <i class="bi bi-pencil me-2"></i>
+                        Edit Profile
+                    </button>
+
+                </section>
+
+
+                <!-- ================= FAVOURITE ================= -->
+
+                <section id="favourite" class="d-none">
+
+                    <h3 class="content-heading">
+                        Favourite Cars
+                    </h3>
+
+                    <div class="empty-message">
+
+                        <i class="bi bi-heart"></i>
+
+                        <h5>No favourite cars</h5>
+
+                        <p>
+                            Cars you add to your favourites will
+                            appear here.
+                        </p>
+
+                    </div>
+
+                </section>
+
+
+                <!-- ================= RECENTLY VIEWED ================= -->
+
+                <section id="recent" class="d-none">
+
+                    <h3 class="content-heading">
+                        Recently Viewed
+                    </h3>
+
+                    <div class="empty-message">
+
+                        <i class="bi bi-clock-history"></i>
+
+                        <h5>No recently viewed cars</h5>
+
+                        <p>
+                            Cars you recently viewed will appear here.
+                        </p>
+
+                    </div>
+
+                </section>
+
+
+                <!-- ================= TEST DRIVE ================= -->
+
+                <section id="testdrive" class="d-none">
+
+                    <h3 class="content-heading">
+                        Test Drive Booking
+                    </h3>
+
+                    <div class="empty-message">
+
+                        <i class="bi bi-car-front"></i>
+
+                        <h5>No test drive bookings</h5>
+
+                        <p>
+                            Your test drive bookings will appear here.
+                        </p>
+
+                    </div>
+
+                </section>
+
+
+                <!-- ================= EMI ================= -->
+
+                <section id="emi" class="d-none">
+
+                    <h3 class="content-heading">
+                        EMI Calculation
+                    </h3>
+
+                    <div class="empty-message">
+
+                        <i class="bi bi-calculator"></i>
+
+                        <h5>No EMI calculations</h5>
+
+                        <p>
+                            Your saved EMI calculations will appear here.
+                        </p>
+
+                    </div>
+
+                </section>
+
+
+                <!-- ================= SETTINGS ================= -->
+
+                <section id="settings" class="d-none">
+
+                    <h3 class="content-heading">
+                        Settings
+                    </h3>
+
+                    <div class="detail-card">
+
+                        <h6>
+                            <i class="bi bi-bell me-2"></i>
+                            Notifications
+                        </h6>
+
+                        <p class="text-muted mb-0">
+                            Manage your notification preferences.
+                        </p>
+
+                    </div>
+
+
+                    <div class="detail-card">
+
+                        <h6>
+                            <i class="bi bi-lock me-2"></i>
+                            Change Password
+                        </h6>
+
+                        <p class="text-muted mb-0">
+                            Update your account password.
+                        </p>
+
+                    </div>
+
+
+                    <div class="detail-card">
+
+                        <h6>
+                            <i class="bi bi-shield-check me-2"></i>
+                            Privacy
+                        </h6>
+
+                        <p class="text-muted mb-0">
+                            Manage your privacy settings.
+                        </p>
+
+                    </div>
+
+                </section>
+
+            </div>
+
+        </aside>
+
+    </div>
+
+</div>
+
+
+<!-- ================= BOOTSTRAP JS ================= -->
+
+<script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js">
+</script>
+
+
+<!-- ================= JAVASCRIPT ================= -->
+
+<script>
+
+    /* ================= SHOW SECTION ================= */
+
+    function showSection(sectionId, button) {
+
+        // Get all sections
+        const sections = [
+            "dashboard",
+            "personal",
+            "favourite",
+            "recent",
+            "testdrive",
+            "emi",
+            "settings"
+        ];
+
+        // Hide all sections
+        sections.forEach(function(section) {
+
+            document
+                .getElementById(section)
+                .classList.add("d-none");
+
+        });
+
+
+        // Show selected section
+        document
+            .getElementById(sectionId)
+            .classList.remove("d-none");
+
+
+        // Remove active class
+        document
+            .querySelectorAll(".menu-btn")
+            .forEach(function(btn) {
+
+                btn.classList.remove("active");
+
+            });
+
+
+        // Add active class
+        if (button) {
+            button.classList.add("active");
+        }
+
+    }
+
+
+    /* ================= LOAD USER DATA ================= */
+
+    function loadUserData() {
+
+        /*
+            These keys should match the keys
+            used in your signup/auth.js.
+        */
+
+        const userName =
+            localStorage.getItem("userName");
+
+        const userEmail =
+            localStorage.getItem("userEmail");
+
+        const userPhone =
+            localStorage.getItem("userPhone");
+
+
+        if (userName) {
+
+            document.getElementById("profileName")
+                .textContent = userName;
+
+            document.getElementById("personalName")
+                .textContent = userName;
+
+        }
+
+
+        if (userEmail) {
+
+            document.getElementById("profileEmail")
+                .textContent = userEmail;
+
+            document.getElementById("personalEmail")
+                .textContent = userEmail;
+
+        }
+
+
+        if (userPhone) {
+
+            document.getElementById("personalPhone")
+                .textContent = userPhone;
+
+        }
+
+    }
+
+
+    /* ================= EDIT PROFILE ================= */
+
+    function editProfile() {
+
+        const name =
+            prompt(
+                "Enter your name:",
+                localStorage.getItem("userName") || ""
+            );
+
+        if (name === null) {
+            return;
+        }
+
+
+        const email =
+            prompt(
+                "Enter your email:",
+                localStorage.getItem("userEmail") || ""
+            );
+
+        if (email === null) {
+            return;
+        }
+
+
+        const phone =
+            prompt(
+                "Enter your mobile number:",
+                localStorage.getItem("userPhone") || ""
+            );
+
+        if (phone === null) {
+            return;
+        }
+
+
+        localStorage.setItem("userName", name);
+        localStorage.setItem("userEmail", email);
+        localStorage.setItem("userPhone", phone);
+
+
+        loadUserData();
+
+
+        alert("Profile updated successfully!");
+
+    }
+
+
+    /* ================= LOGOUT ================= */
+
+    function logout() {
+
+        const confirmLogout =
+            confirm("Are you sure you want to logout?");
+
+        if (confirmLogout) {
+
+            localStorage.removeItem("isLoggedIn");
+
+            window.location.href = "login.html";
+
+        }
+
+    }
+
+
+    /* ================= PAGE LOAD ================= */
+
+    document.addEventListener(
+        "DOMContentLoaded",
+        function() {
+
+            loadUserData();
+
+        }
+    );
+
+</script>
+
+</body>
+</html>
+
