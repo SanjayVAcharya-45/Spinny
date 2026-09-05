@@ -208,3 +208,226 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
 });
+
+// ===============================
+// SIGNUP VALIDATION
+// ===============================
+
+const signupForm = document.getElementById("signupForm");
+
+if (signupForm) {
+
+    signupForm.addEventListener("submit", function (event) {
+
+        event.preventDefault();
+
+        // Get values
+        const fullName = document.getElementById("fullName").value.trim();
+        const email = document.getElementById("email").value.trim();
+        const phone = document.getElementById("phone").value.trim();
+        const password = document.getElementById("password").value;
+        const confirmPassword = document.getElementById("confirmPassword").value;
+        const terms = document.getElementById("terms").checked;
+
+        // Error elements
+        const nameError = document.getElementById("nameError");
+        const emailError = document.getElementById("emailError");
+        const phoneError = document.getElementById("phoneError");
+        const passwordError = document.getElementById("passwordError");
+        const confirmPasswordError =
+            document.getElementById("confirmPasswordError");
+        const termsError = document.getElementById("termsError");
+
+        // Clear errors
+        nameError.textContent = "";
+        emailError.textContent = "";
+        phoneError.textContent = "";
+        passwordError.textContent = "";
+        confirmPasswordError.textContent = "";
+        termsError.textContent = "";
+
+        let isValid = true;
+
+        // Name validation
+        if (fullName === "") {
+            nameError.textContent = "Please enter your full name.";
+            isValid = false;
+        }
+
+        // Email validation
+        const emailPattern =
+            /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+        if (email === "") {
+            emailError.textContent = "Please enter your email.";
+            isValid = false;
+        } 
+        else if (!emailPattern.test(email)) {
+            emailError.textContent = "Please enter a valid email.";
+            isValid = false;
+        }
+
+        // Phone validation
+        const phonePattern = /^[0-9]{10}$/;
+
+        if (phone === "") {
+            phoneError.textContent = "Please enter your phone number.";
+            isValid = false;
+        } 
+        else if (!phonePattern.test(phone)) {
+            phoneError.textContent =
+                "Phone number must contain exactly 10 digits.";
+            isValid = false;
+        }
+
+        // Password validation
+        if (password === "") {
+            passwordError.textContent = "Please create a password.";
+            isValid = false;
+        } 
+        else if (password.length < 6) {
+            passwordError.textContent =
+                "Password must contain at least 6 characters.";
+            isValid = false;
+        }
+
+        // Confirm password
+        if (confirmPassword === "") {
+            confirmPasswordError.textContent =
+                "Please confirm your password.";
+            isValid = false;
+        } 
+        else if (password !== confirmPassword) {
+            confirmPasswordError.textContent =
+                "Passwords do not match.";
+            isValid = false;
+        }
+
+        // Terms
+        if (!terms) {
+            termsError.textContent =
+                "Please accept the Terms & Conditions.";
+            isValid = false;
+        }
+
+        // Stop if validation failed
+        if (!isValid) {
+            return;
+        }
+
+        // Check existing user
+        const existingUser =
+            JSON.parse(localStorage.getItem("spinnyUser"));
+
+        if (existingUser &&
+            (existingUser.email === email ||
+             existingUser.phone === phone)) {
+
+            alert("An account with this email or phone already exists.");
+            return;
+        }
+
+        // Create user object
+        const user = {
+            fullName: fullName,
+            email: email,
+            phone: phone,
+            password: password
+        };
+
+        // Save user
+        localStorage.setItem(
+            "spinnyUser",
+            JSON.stringify(user)
+        );
+
+        // Success message
+        document.getElementById("successMessage").innerHTML =
+            '<div class="alert alert-success">' +
+            'Account created successfully! Redirecting to login...' +
+            '</div>';
+
+        // Clear form
+        signupForm.reset();
+
+        // Redirect to login
+        setTimeout(function () {
+            window.location.href = "login.html";
+        }, 1500);
+
+    });
+}
+
+
+// ===============================
+// SHOW / HIDE PASSWORD
+// ===============================
+
+const togglePassword =
+    document.getElementById("togglePassword");
+
+if (togglePassword) {
+
+    togglePassword.addEventListener("click", function () {
+
+        const password =
+            document.getElementById("password");
+
+        const icon =
+            this.querySelector("i");
+
+        if (password.type === "password") {
+
+            password.type = "text";
+
+            icon.classList.remove("bi-eye");
+            icon.classList.add("bi-eye-slash");
+
+        } else {
+
+            password.type = "password";
+
+            icon.classList.remove("bi-eye-slash");
+            icon.classList.add("bi-eye");
+
+        }
+
+    });
+}
+
+
+// ===============================
+// SHOW / HIDE CONFIRM PASSWORD
+// ===============================
+
+const toggleConfirmPassword =
+    document.getElementById("toggleConfirmPassword");
+
+if (toggleConfirmPassword) {
+
+    toggleConfirmPassword.addEventListener("click", function () {
+
+        const confirmPassword =
+            document.getElementById("confirmPassword");
+
+        const icon =
+            this.querySelector("i");
+
+        if (confirmPassword.type === "password") {
+
+            confirmPassword.type = "text";
+
+            icon.classList.remove("bi-eye");
+            icon.classList.add("bi-eye-slash");
+
+        } else {
+
+            confirmPassword.type = "password";
+
+            icon.classList.remove("bi-eye-slash");
+            icon.classList.add("bi-eye");
+
+        }
+
+    });
+}
