@@ -1,7 +1,9 @@
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -20,44 +22,81 @@
     >
 
     <style>
-        body {
-            background-color: #f5f5f5;
-            font-family: Arial, sans-serif;
+
+        /* ================= GENERAL ================= */
+
+        :root {
+            --black: #111111;
+            --dark-black: #000000;
+            --red: #e00000;
+            --white: #ffffff;
+            --light-gray: #f5f5f5;
+            --border: #e5e5e5;
+            --text-gray: #666666;
         }
 
-        /* Navbar */
+        body {
+            background-color: var(--light-gray);
+            font-family: Arial, sans-serif;
+            color: var(--black);
+        }
+
+
+        /* ================= NAVBAR ================= */
+
         .navbar {
-            background-color: #ffffff;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+            background-color: var(--black);
+            padding: 14px 0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
         }
 
         .navbar-brand {
             font-size: 28px;
             font-weight: bold;
-            color: #111 !important;
+            color: var(--white) !important;
         }
 
         .navbar-brand span {
-            color: #e53935;
+            color: var(--red);
         }
 
         .nav-link {
-            color: #333 !important;
+            color: var(--white) !important;
             font-weight: 500;
+            margin-left: 15px;
+            transition: 0.3s;
         }
+
+        .nav-link:hover {
+            color: var(--red) !important;
+        }
+
+        .navbar-toggler {
+            border-color: var(--white);
+        }
+
+        .navbar-toggler-icon {
+            filter: invert(1);
+        }
+
+
+        /* ================= PROFILE WRAPPER ================= */
 
         .profile-wrapper {
             margin-top: 30px;
             margin-bottom: 40px;
         }
 
-        /* Left Sidebar */
+
+        /* ================= LEFT SIDEBAR ================= */
+
         .sidebar {
-            background: #ffffff;
+            background-color: var(--white);
             border-radius: 12px;
             padding: 15px 10px;
-            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
-            min-height: 600px;
+            box-shadow: 0 3px 15px rgba(0, 0, 0, 0.10);
+            min-height: 650px;
+            border-top: 4px solid var(--red);
         }
 
         .sidebar-title {
@@ -65,6 +104,8 @@
             font-weight: bold;
             padding: 15px;
             margin-bottom: 10px;
+            color: var(--black);
+            border-bottom: 1px solid var(--border);
         }
 
         .sidebar-menu {
@@ -85,131 +126,264 @@
             text-align: left;
             border-radius: 8px;
             font-size: 15px;
-            color: #333;
-            transition: 0.2s;
+            color: var(--black);
+            transition: 0.3s;
         }
 
-        .sidebar-menu button:hover,
-        .sidebar-menu button.active {
-            background-color: #111;
-            color: white;
+        .sidebar-menu button i {
+            color: var(--red);
+            font-size: 17px;
         }
+
+        .sidebar-menu button:hover {
+            background-color: #fcecec;
+            color: var(--red);
+        }
+
+        .sidebar-menu button.active {
+            background-color: var(--red);
+            color: var(--white);
+        }
+
+        .sidebar-menu button.active i {
+            color: var(--white);
+        }
+
+
+        /* ================= LOGOUT ================= */
 
         .logout-btn {
-            color: #dc3545 !important;
+            color: var(--red) !important;
+            margin-top: 15px;
+        }
+
+        .logout-btn i {
+            color: var(--red) !important;
         }
 
         .logout-btn:hover {
-            background-color: #dc3545 !important;
-            color: white !important;
+            background-color: var(--red) !important;
+            color: var(--white) !important;
         }
 
-        /* Right Content */
+        .logout-btn:hover i {
+            color: var(--white) !important;
+        }
+
+
+        /* ================= RIGHT CONTENT ================= */
+
         .content-area {
-            background: #ffffff;
+            background-color: var(--white);
             border-radius: 12px;
             padding: 30px;
-            min-height: 600px;
-            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+            min-height: 650px;
+            box-shadow: 0 3px 15px rgba(0, 0, 0, 0.10);
+            border-top: 4px solid var(--black);
         }
 
-        /* Profile */
+
+        /* ================= PROFILE ================= */
+
         .profile-section {
-            text-align: center;
-            padding-bottom: 30px;
-            border-bottom: 1px solid #ddd;
+            display: flex;
+            align-items: center;
+            gap: 25px;
+            padding: 15px 10px 25px;
+            border-bottom: 2px solid var(--border);
         }
 
         .profile-image {
-            width: 110px;
-            height: 110px;
+            width: 100px;
+            height: 100px;
+            min-width: 100px;
             border-radius: 50%;
-            background: #eeeeee;
+            background-color: var(--black);
             display: flex;
             align-items: center;
             justify-content: center;
-            margin: 0 auto 15px;
-            font-size: 50px;
-            color: #777;
+            font-size: 45px;
+            color: var(--white);
+            border: 4px solid var(--red);
+        }
+
+        .profile-info {
+            flex: 1;
         }
 
         .profile-name {
-            font-size: 25px;
+            font-size: 24px;
             font-weight: bold;
-            margin-bottom: 5px;
-        }
-
-        .profile-email {
-            color: #777;
-            margin-bottom: 20px;
-        }
-
-        /* Summary */
-        .summary-title {
-            margin-top: 30px;
-            margin-bottom: 20px;
-            font-weight: bold;
-        }
-
-        .summary-card {
-            border: none;
-            border-radius: 12px;
-            padding: 20px;
-            height: 100%;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
-            background: #fafafa;
-        }
-
-        .summary-icon {
-            font-size: 30px;
+            color: var(--black);
             margin-bottom: 10px;
         }
 
-        .summary-number {
-            font-size: 28px;
-            font-weight: bold;
-        }
-
-        .summary-label {
-            color: #777;
-        }
-
-        /* Content headings */
-        .content-heading {
-            font-weight: bold;
-            margin-bottom: 25px;
-        }
-
-        .detail-card {
-            background: #f8f8f8;
-            border-radius: 10px;
-            padding: 20px;
+        .profile-details {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px 25px;
             margin-bottom: 15px;
         }
 
-        .detail-label {
-            color: #777;
+        .profile-detail {
+            color: var(--text-gray);
             font-size: 14px;
+        }
+
+        .profile-detail i {
+            color: var(--red);
+            margin-right: 6px;
+        }
+
+
+        /* ================= BUTTON ================= */
+
+        .btn-dark {
+            background-color: var(--black);
+            border-color: var(--black);
+            padding: 9px 20px;
+            border-radius: 6px;
+            font-weight: 500;
+        }
+
+        .btn-dark:hover {
+            background-color: var(--red);
+            border-color: var(--red);
+        }
+
+
+        /* ================= QUICK SUMMARY ================= */
+
+        .summary-title {
+            margin-top: 25px;
+            margin-bottom: 15px;
+            font-size: 20px;
+            font-weight: bold;
+            color: var(--black);
+            border-left: 5px solid var(--red);
+            padding-left: 10px;
+        }
+
+        .summary-card {
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 15px;
+            min-height: 115px;
+            height: 100%;
+            background-color: var(--white);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+            transition: 0.3s;
+            border-bottom: 3px solid var(--black);
+        }
+
+        .summary-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 12px rgba(0, 0, 0, 0.12);
+        }
+
+
+        /* ================= SUMMARY ICONS ================= */
+
+        .summary-icon {
+            font-size: 26px;
+            margin-bottom: 6px;
+        }
+
+        /* Favourite - Red */
+
+        .favourite-icon {
+            color: #e00000;
+        }
+
+        /* Recently Viewed - Blue */
+
+        .recent-icon {
+            color: #0d6efd;
+        }
+
+        /* Test Drive - Green */
+
+        .testdrive-icon {
+            color: #198754;
+        }
+
+        /* EMI - Purple */
+
+        .emi-icon {
+            color: #6f42c1;
+        }
+
+
+        .summary-number {
+            font-size: 23px;
+            font-weight: bold;
+            color: var(--black);
+        }
+
+        .summary-label {
+            color: var(--text-gray);
+            font-size: 13px;
+        }
+
+
+        /* ================= CONTENT HEADINGS ================= */
+
+        .content-heading {
+            font-weight: bold;
+            margin-bottom: 25px;
+            color: var(--black);
+            border-left: 5px solid var(--red);
+            padding-left: 12px;
+        }
+
+
+        /* ================= DETAIL CARDS ================= */
+
+        .detail-card {
+            background-color: #fafafa;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 15px;
+            border-left: 4px solid var(--red);
+        }
+
+        .detail-label {
+            color: var(--text-gray);
+            font-size: 14px;
+            margin-bottom: 5px;
         }
 
         .detail-value {
             font-weight: 600;
             font-size: 16px;
+            color: var(--black);
         }
+
+
+        /* ================= EMPTY MESSAGE ================= */
 
         .empty-message {
             text-align: center;
             padding: 70px 20px;
-            color: #777;
+            color: var(--text-gray);
         }
 
         .empty-message i {
             font-size: 55px;
             margin-bottom: 15px;
+            color: var(--red);
         }
 
-        /* Responsive */
+        .empty-message h5 {
+            color: var(--black);
+            font-weight: bold;
+        }
+
+
+        /* ================= MOBILE ================= */
+
         @media (max-width: 768px) {
+
             .sidebar {
                 min-height: auto;
                 margin-bottom: 20px;
@@ -218,15 +392,39 @@
             .content-area {
                 padding: 20px;
             }
+
+            .nav-link {
+                margin-left: 0;
+                padding: 10px;
+            }
+
+            .profile-section {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .profile-info {
+                width: 100%;
+            }
+
+            .profile-details {
+                justify-content: center;
+            }
+
         }
+
     </style>
+
 </head>
 
+
 <body>
+
 
 <!-- ================= NAVBAR ================= -->
 
 <nav class="navbar navbar-expand-lg">
+
     <div class="container">
 
         <a class="navbar-brand" href="#">
@@ -242,31 +440,45 @@
             <span class="navbar-toggler-icon"></span>
         </button>
 
-        <div class="collapse navbar-collapse" id="navbarMenu">
+        <div
+            class="collapse navbar-collapse"
+            id="navbarMenu"
+        >
 
             <ul class="navbar-nav ms-auto">
 
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Buy Car</a>
+                    <a class="nav-link" href="#">
+                        Buy Car
+                    </a>
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Sell Car</a>
+                    <a class="nav-link" href="#">
+                        Sell Car
+                    </a>
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Finance</a>
+                    <a class="nav-link" href="#">
+                        Finance
+                    </a>
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="#">About Us</a>
+                    <a class="nav-link" href="#">
+                        About Us
+                    </a>
                 </li>
 
             </ul>
 
         </div>
+
     </div>
+
 </nav>
+
 
 
 <!-- ================= PROFILE PAGE ================= -->
@@ -274,6 +486,7 @@
 <div class="container profile-wrapper">
 
     <div class="row g-4">
+
 
         <!-- ================= LEFT ASIDE ================= -->
 
@@ -287,6 +500,9 @@
 
                 <ul class="sidebar-menu">
 
+
+                    <!-- Dashboard -->
+
                     <li>
                         <button
                             class="menu-btn active"
@@ -296,6 +512,9 @@
                             Dashboard
                         </button>
                     </li>
+
+
+                    <!-- Personal Details -->
 
                     <li>
                         <button
@@ -307,6 +526,9 @@
                         </button>
                     </li>
 
+
+                    <!-- Favourite -->
+
                     <li>
                         <button
                             class="menu-btn"
@@ -316,6 +538,9 @@
                             Favourite
                         </button>
                     </li>
+
+
+                    <!-- Recently Viewed -->
 
                     <li>
                         <button
@@ -327,6 +552,9 @@
                         </button>
                     </li>
 
+
+                    <!-- Test Drive -->
+
                     <li>
                         <button
                             class="menu-btn"
@@ -336,6 +564,9 @@
                             Test Drive Booking
                         </button>
                     </li>
+
+
+                    <!-- EMI -->
 
                     <li>
                         <button
@@ -347,6 +578,9 @@
                         </button>
                     </li>
 
+
+                    <!-- Settings -->
+
                     <li>
                         <button
                             class="menu-btn"
@@ -356,6 +590,9 @@
                             Settings
                         </button>
                     </li>
+
+
+                    <!-- Logout -->
 
                     <li>
                         <button
@@ -367,11 +604,13 @@
                         </button>
                     </li>
 
+
                 </ul>
 
             </div>
 
         </aside>
+
 
 
         <!-- ================= RIGHT ASIDE ================= -->
@@ -380,57 +619,124 @@
 
             <div class="content-area">
 
+
                 <!-- ================= DASHBOARD ================= -->
 
                 <section id="dashboard">
 
+
+                    <!-- PROFILE -->
+
                     <div class="profile-section">
 
+
+                        <!-- Profile Photo -->
+
                         <div class="profile-image">
+
                             <i class="bi bi-person"></i>
+
                         </div>
 
-                        <div
-                            class="profile-name"
-                            id="profileName"
-                        >
-                            Pooja B
-                        </div>
 
-                        <div
-                            class="profile-email"
-                            id="profileEmail"
-                        >
-                            pooja@gmail.com
-                        </div>
+                        <!-- Profile Information -->
 
-                        <button
-                            class="btn btn-dark"
-                            onclick="showSection('personal')"
-                        >
-                            <i class="bi bi-pencil me-2"></i>
-                            Edit Profile
-                        </button>
+                        <div class="profile-info">
+
+
+                            <div
+                                class="profile-name"
+                                id="profileName"
+                            >
+                                Pooja B
+                            </div>
+
+
+                            <div class="profile-details">
+
+
+                                <!-- Email -->
+
+                                <div class="profile-detail">
+
+                                    <i class="bi bi-envelope"></i>
+
+                                    <span id="profileEmail">
+                                        pooja@gmail.com
+                                    </span>
+
+                                </div>
+
+
+                                <!-- Mobile -->
+
+                                <div class="profile-detail">
+
+                                    <i class="bi bi-phone"></i>
+
+                                    <span id="profilePhone">
+                                        9876543210
+                                    </span>
+
+                                </div>
+
+
+                                <!-- Location -->
+
+                                <div class="profile-detail">
+
+                                    <i class="bi bi-geo-alt"></i>
+
+                                    <span id="profileLocation">
+                                        Bangalore
+                                    </span>
+
+                                </div>
+
+
+                            </div>
+
+
+                            <!-- Edit Profile -->
+
+                            <button
+                                class="btn btn-dark"
+                                onclick="showSection('personal')"
+                            >
+
+                                <i class="bi bi-pencil me-2"></i>
+
+                                Edit Profile
+
+                            </button>
+
+
+                        </div>
 
                     </div>
 
 
-                    <!-- QUICK SUMMARY -->
+
+                    <!-- ================= QUICK SUMMARY ================= -->
 
                     <h4 class="summary-title">
                         Quick Summary
                     </h4>
 
-                    <div class="row g-4">
 
-                        <!-- Favourite -->
+                    <div class="row g-3">
 
-                        <div class="col-md-6">
+
+                        <!-- ================= FAVOURITE ================= -->
+
+                        <div class="col-6">
 
                             <div class="summary-card">
 
-                                <div class="summary-icon">
-                                    <i class="bi bi-heart"></i>
+                                <div class="summary-icon favourite-icon">
+
+                                    <i class="bi bi-heart-fill"></i>
+
                                 </div>
 
                                 <div
@@ -449,14 +755,19 @@
                         </div>
 
 
-                        <!-- Recently Viewed -->
 
-                        <div class="col-md-6">
+                        <!-- ================= RECENTLY VIEWED ================= -->
+
+                        <div class="col-6">
 
                             <div class="summary-card">
 
-                                <div class="summary-icon">
-                                    <i class="bi bi-clock-history"></i>
+                                <div class="summary-icon recent-icon">
+
+                                    <!-- Simple Blue Eye -->
+
+                                    <i class="bi bi-eye"></i>
+
                                 </div>
 
                                 <div
@@ -475,14 +786,19 @@
                         </div>
 
 
-                        <!-- Test Drives -->
 
-                        <div class="col-md-6">
+                        <!-- ================= TEST DRIVE ================= -->
+
+                        <div class="col-6">
 
                             <div class="summary-card">
 
-                                <div class="summary-icon">
-                                    <i class="bi bi-car-front"></i>
+                                <div class="summary-icon testdrive-icon">
+
+                                    <!-- Green Calendar -->
+
+                                    <i class="bi bi-calendar3"></i>
+
                                 </div>
 
                                 <div
@@ -501,14 +817,19 @@
                         </div>
 
 
-                        <!-- EMI -->
 
-                        <div class="col-md-6">
+                        <!-- ================= EMI ================= -->
+
+                        <div class="col-6">
 
                             <div class="summary-card">
 
-                                <div class="summary-icon">
+                                <div class="summary-icon emi-icon">
+
+                                    <!-- Purple Calculator -->
+
                                     <i class="bi bi-calculator"></i>
+
                                 </div>
 
                                 <div
@@ -526,18 +847,24 @@
 
                         </div>
 
+
                     </div>
 
                 </section>
 
 
+
                 <!-- ================= PERSONAL DETAILS ================= -->
 
-                <section id="personal" class="d-none">
+                <section
+                    id="personal"
+                    class="d-none"
+                >
 
                     <h3 class="content-heading">
                         Personal Details
                     </h3>
+
 
                     <div class="detail-card">
 
@@ -581,7 +908,23 @@
                             class="detail-value"
                             id="personalPhone"
                         >
-                            Not available
+                            9876543210
+                        </div>
+
+                    </div>
+
+
+                    <div class="detail-card">
+
+                        <div class="detail-label">
+                            Location
+                        </div>
+
+                        <div
+                            class="detail-value"
+                            id="personalLocation"
+                        >
+                            Bangalore
                         </div>
 
                     </div>
@@ -591,29 +934,70 @@
                         class="btn btn-dark"
                         onclick="editProfile()"
                     >
+
                         <i class="bi bi-pencil me-2"></i>
+
                         Edit Profile
+
                     </button>
 
                 </section>
 
 
+
                 <!-- ================= FAVOURITE ================= -->
 
-                <section id="favourite" class="d-none">
+                <section
+                    id="favourite"
+                    class="d-none"
+                >
 
                     <h3 class="content-heading">
                         Favourite Cars
                     </h3>
 
+
                     <div class="empty-message">
 
                         <i class="bi bi-heart"></i>
 
-                        <h5>No favourite cars</h5>
+                        <h5>
+                            No favourite cars
+                        </h5>
 
                         <p>
-                            Cars you add to your favourites will
+                            Cars you add to your favourites
+                            will appear here.
+                        </p>
+
+                    </div>
+
+                </section>
+
+
+
+                <!-- ================= RECENTLY VIEWED ================= -->
+
+                <section
+                    id="recent"
+                    class="d-none"
+                >
+
+                    <h3 class="content-heading">
+                        Recently Viewed
+                    </h3>
+
+
+                    <div class="empty-message">
+
+                        <i class="bi bi-eye"></i>
+
+                        <h5>
+                            No recently viewed cars
+                        </h5>
+
+                        <p>
+                            Cars you recently viewed will
                             appear here.
                         </p>
 
@@ -622,45 +1006,30 @@
                 </section>
 
 
-                <!-- ================= RECENTLY VIEWED ================= -->
-
-                <section id="recent" class="d-none">
-
-                    <h3 class="content-heading">
-                        Recently Viewed
-                    </h3>
-
-                    <div class="empty-message">
-
-                        <i class="bi bi-clock-history"></i>
-
-                        <h5>No recently viewed cars</h5>
-
-                        <p>
-                            Cars you recently viewed will appear here.
-                        </p>
-
-                    </div>
-
-                </section>
-
 
                 <!-- ================= TEST DRIVE ================= -->
 
-                <section id="testdrive" class="d-none">
+                <section
+                    id="testdrive"
+                    class="d-none"
+                >
 
                     <h3 class="content-heading">
                         Test Drive Booking
                     </h3>
 
+
                     <div class="empty-message">
 
-                        <i class="bi bi-car-front"></i>
+                        <i class="bi bi-calendar3"></i>
 
-                        <h5>No test drive bookings</h5>
+                        <h5>
+                            No test drive bookings
+                        </h5>
 
                         <p>
-                            Your test drive bookings will appear here.
+                            Your test drive bookings will
+                            appear here.
                         </p>
 
                     </div>
@@ -668,22 +1037,30 @@
                 </section>
 
 
+
                 <!-- ================= EMI ================= -->
 
-                <section id="emi" class="d-none">
+                <section
+                    id="emi"
+                    class="d-none"
+                >
 
                     <h3 class="content-heading">
                         EMI Calculation
                     </h3>
 
+
                     <div class="empty-message">
 
                         <i class="bi bi-calculator"></i>
 
-                        <h5>No EMI calculations</h5>
+                        <h5>
+                            No EMI calculations
+                        </h5>
 
                         <p>
-                            Your saved EMI calculations will appear here.
+                            Your saved EMI calculations
+                            will appear here.
                         </p>
 
                     </div>
@@ -691,13 +1068,18 @@
                 </section>
 
 
+
                 <!-- ================= SETTINGS ================= -->
 
-                <section id="settings" class="d-none">
+                <section
+                    id="settings"
+                    class="d-none"
+                >
 
                     <h3 class="content-heading">
                         Settings
                     </h3>
+
 
                     <div class="detail-card">
 
@@ -742,6 +1124,7 @@
 
                 </section>
 
+
             </div>
 
         </aside>
@@ -751,11 +1134,13 @@
 </div>
 
 
+
 <!-- ================= BOOTSTRAP JS ================= -->
 
 <script
     src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js">
 </script>
+
 
 
 <!-- ================= JAVASCRIPT ================= -->
@@ -766,7 +1151,6 @@
 
     function showSection(sectionId, button) {
 
-        // Get all sections
         const sections = [
             "dashboard",
             "personal",
@@ -777,7 +1161,9 @@
             "settings"
         ];
 
-        // Hide all sections
+
+        /* Hide all sections */
+
         sections.forEach(function(section) {
 
             document
@@ -787,13 +1173,15 @@
         });
 
 
-        // Show selected section
+        /* Show selected section */
+
         document
             .getElementById(sectionId)
             .classList.remove("d-none");
 
 
-        // Remove active class
+        /* Remove active menu */
+
         document
             .querySelectorAll(".menu-btn")
             .forEach(function(btn) {
@@ -803,22 +1191,21 @@
             });
 
 
-        // Add active class
+        /* Add active menu */
+
         if (button) {
+
             button.classList.add("active");
+
         }
 
     }
 
 
+
     /* ================= LOAD USER DATA ================= */
 
     function loadUserData() {
-
-        /*
-            These keys should match the keys
-            used in your signup/auth.js.
-        */
 
         const userName =
             localStorage.getItem("userName");
@@ -829,37 +1216,71 @@
         const userPhone =
             localStorage.getItem("userPhone");
 
+        const userLocation =
+            localStorage.getItem("userLocation");
+
+
+        /* Name */
 
         if (userName) {
 
-            document.getElementById("profileName")
+            document
+                .getElementById("profileName")
                 .textContent = userName;
 
-            document.getElementById("personalName")
+            document
+                .getElementById("personalName")
                 .textContent = userName;
 
         }
 
+
+        /* Email */
 
         if (userEmail) {
 
-            document.getElementById("profileEmail")
+            document
+                .getElementById("profileEmail")
                 .textContent = userEmail;
 
-            document.getElementById("personalEmail")
+            document
+                .getElementById("personalEmail")
                 .textContent = userEmail;
 
         }
 
 
+        /* Phone */
+
         if (userPhone) {
 
-            document.getElementById("personalPhone")
+            document
+                .getElementById("profilePhone")
+                .textContent = userPhone;
+
+            document
+                .getElementById("personalPhone")
                 .textContent = userPhone;
 
         }
 
+
+        /* Location */
+
+        if (userLocation) {
+
+            document
+                .getElementById("profileLocation")
+                .textContent = userLocation;
+
+            document
+                .getElementById("personalLocation")
+                .textContent = userLocation;
+
+        }
+
     }
+
 
 
     /* ================= EDIT PROFILE ================= */
@@ -869,7 +1290,7 @@
         const name =
             prompt(
                 "Enter your name:",
-                localStorage.getItem("userName") || ""
+                localStorage.getItem("userName") || "Pooja B"
             );
 
         if (name === null) {
@@ -880,7 +1301,7 @@
         const email =
             prompt(
                 "Enter your email:",
-                localStorage.getItem("userEmail") || ""
+                localStorage.getItem("userEmail") || "pooja@gmail.com"
             );
 
         if (email === null) {
@@ -891,7 +1312,7 @@
         const phone =
             prompt(
                 "Enter your mobile number:",
-                localStorage.getItem("userPhone") || ""
+                localStorage.getItem("userPhone") || "9876543210"
             );
 
         if (phone === null) {
@@ -899,10 +1320,29 @@
         }
 
 
+        const location =
+            prompt(
+                "Enter your location:",
+                localStorage.getItem("userLocation") || "Bangalore"
+            );
+
+        if (location === null) {
+            return;
+        }
+
+
+        /* Save data */
+
         localStorage.setItem("userName", name);
+
         localStorage.setItem("userEmail", email);
+
         localStorage.setItem("userPhone", phone);
 
+        localStorage.setItem("userLocation", location);
+
+
+        /* Update page */
 
         loadUserData();
 
@@ -912,12 +1352,14 @@
     }
 
 
+
     /* ================= LOGOUT ================= */
 
     function logout() {
 
         const confirmLogout =
             confirm("Are you sure you want to logout?");
+
 
         if (confirmLogout) {
 
@@ -928,6 +1370,7 @@
         }
 
     }
+
 
 
     /* ================= PAGE LOAD ================= */
@@ -943,6 +1386,8 @@
 
 </script>
 
+
 </body>
+
 </html>
 
