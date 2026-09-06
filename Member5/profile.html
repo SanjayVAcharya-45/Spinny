@@ -1,216 +1,186 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Profile - Spinny</title>
+    <title>My Profile - Spinny</title>
 
-    <!-- Bootstrap 5 -->
+    <!-- Bootstrap CSS -->
     <link
         href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
-        rel="stylesheet">
+        rel="stylesheet"
+    >
 
     <!-- Bootstrap Icons -->
     <link
         href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css"
-        rel="stylesheet">
+        rel="stylesheet"
+    >
 
     <style>
-
-        * {
-            box-sizing: border-box;
-        }
-
         body {
-            margin: 0;
             background-color: #f5f5f5;
             font-family: Arial, sans-serif;
-            color: #222;
         }
 
-        /* ================= NAVBAR ================= */
-
+        /* Navbar */
         .navbar {
             background-color: #000;
-            padding: 15px 30px;
         }
 
         .navbar-brand {
-            color: white;
-            font-size: 28px;
+            color: #fff !important;
+            font-size: 24px;
             font-weight: bold;
-            text-decoration: none;
         }
 
         .navbar-brand span {
-            color: #e63946;
+            color: #e53935;
         }
 
-        .profile-icon {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background-color: #e63946;
-            color: white;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 20px;
-        }
-
-        /* ================= MAIN LAYOUT ================= */
-
-        .main-container {
+        /* Main layout */
+        .profile-container {
             display: flex;
             gap: 25px;
             padding: 30px;
-            max-width: 1400px;
-            margin: auto;
         }
 
-        /* ================= LEFT SIDEBAR ================= */
-
-        .left-sidebar {
-            width: 260px;
-            min-width: 260px;
-            background-color: white;
-            padding: 20px;
+        /* Left sidebar */
+        .sidebar {
+            width: 250px;
+            background-color: #fff;
             border-radius: 12px;
+            padding: 20px;
             height: fit-content;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+            box-shadow: 0 3px 12px rgba(0, 0, 0, 0.08);
         }
 
-        .sidebar-title {
-            font-size: 20px;
+        .sidebar h4 {
             font-weight: bold;
             margin-bottom: 20px;
         }
 
         .menu-btn {
+            width: 100%;
             display: flex;
             align-items: center;
             gap: 12px;
-            width: 100%;
-            padding: 12px 15px;
+            padding: 13px 15px;
             margin-bottom: 8px;
             border: none;
-            background-color: transparent;
+            border-radius: 8px;
+            background: transparent;
             color: #333;
             text-decoration: none;
-            border-radius: 8px;
             cursor: pointer;
-            font-size: 15px;
-            text-align: left;
+            transition: 0.3s;
         }
 
         .menu-btn:hover {
-            background-color: #f5f5f5;
-            color: #e63946;
+            background-color: #f2f2f2;
+            color: #e53935;
         }
 
         .menu-btn.active {
-            background-color: #e63946;
-            color: white;
+            background-color: #e53935;
+            color: #fff;
         }
 
         .menu-btn i {
             font-size: 18px;
-            width: 22px;
         }
 
-        /* Favourite icon */
-        .menu-btn .bi-heart-fill {
-            color: #e63946;
+        .favourite-icon {
+            color: #e53935;
         }
 
-        .menu-btn.active .bi-heart-fill {
-            color: white;
+        .eye-icon {
+            color: #0d6efd;
         }
 
-        /* ================= RIGHT CONTENT ================= */
+        .test-icon {
+            color: #198754;
+        }
 
-        .right-content {
+        .emi-icon {
+            color: #6f42c1;
+        }
+
+        /* Right content */
+        .content-area {
             flex: 1;
         }
 
         .content-section {
-            background-color: white;
+            background-color: #fff;
             border-radius: 12px;
-            padding: 25px;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+            padding: 30px;
+            box-shadow: 0 3px 12px rgba(0, 0, 0, 0.08);
         }
 
         .section-title {
-            font-size: 25px;
+            font-size: 28px;
             font-weight: bold;
-            margin-bottom: 20px;
-        }
-
-        .d-none {
-            display: none !important;
-        }
-
-        /* ================= PROFILE ================= */
-
-        .profile-box {
-            display: flex;
-            align-items: center;
-            gap: 30px;
-            padding: 20px;
-            background-color: #fafafa;
-            border-radius: 12px;
             margin-bottom: 25px;
         }
 
-        .profile-photo {
+        /* Profile information */
+        .profile-info {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 25px;
+        }
+
+        .profile-image {
             width: 120px;
             height: 120px;
             border-radius: 50%;
-            background-color: #e63946;
-            color: white;
+            background-color: #e53935;
+            color: #fff;
             display: flex;
-            align-items: center;
             justify-content: center;
+            align-items: center;
             font-size: 55px;
             flex-shrink: 0;
         }
 
         .profile-details h2 {
-            margin-bottom: 10px;
+            margin-bottom: 15px;
             font-weight: bold;
         }
 
         .profile-details p {
-            margin-bottom: 7px;
-            color: #666;
+            margin-bottom: 8px;
+            color: #555;
         }
 
         .profile-details i {
-            color: #e63946;
-            margin-right: 8px;
+            width: 25px;
+            color: #e53935;
         }
 
         .edit-btn {
-            background-color: #e63946;
-            color: white;
+            margin-top: 10px;
+            background-color: #e53935;
+            color: #fff;
             border: none;
             padding: 10px 20px;
-            border-radius: 6px;
-            margin-top: 8px;
+            border-radius: 7px;
         }
 
         .edit-btn:hover {
-            background-color: #c92f3b;
+            background-color: #c62828;
+            color: #fff;
         }
 
-        /* ================= QUICK SUMMARY ================= */
-
+        /* Quick summary */
         .summary-title {
-            font-size: 20px;
+            margin-top: 30px;
+            margin-bottom: 20px;
             font-weight: bold;
-            margin-bottom: 15px;
         }
 
         .summary-grid {
@@ -220,1057 +190,612 @@
         }
 
         .summary-card {
+            background-color: #fafafa;
             border: 1px solid #ddd;
             border-radius: 10px;
             padding: 18px;
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            background-color: white;
+            transition: 0.3s;
+        }
+
+        .summary-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
         }
 
         .summary-icon {
-            width: 48px;
-            height: 48px;
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 23px;
+            font-size: 28px;
+            margin-bottom: 10px;
         }
 
         .summary-card h5 {
-            margin: 0;
-            font-size: 16px;
             font-weight: bold;
+            margin-bottom: 5px;
         }
 
         .summary-card p {
-            margin: 4px 0 0;
+            margin: 0;
             color: #777;
             font-size: 14px;
         }
 
-        /* Favourite */
-        .favourite-icon {
-            background-color: #ffe5e8;
-            color: #e63946;
-        }
-
-        /* Recently Viewed */
-        .recent-icon {
-            background-color: #e5f1ff;
-            color: #1479e8;
-        }
-
-        /* Test Drive */
-        .testdrive-icon {
-            background-color: #e6f8eb;
-            color: #198754;
-        }
-
-        /* EMI */
-        .emi-icon {
-            background-color: #f0e7ff;
-            color: #7b2cbf;
-        }
-
-        /* ================= OTHER SECTIONS ================= */
-
-        .info-card {
-            background-color: #fafafa;
-            padding: 20px;
-            border-radius: 10px;
-            margin-bottom: 15px;
-        }
-
-        .info-card h5 {
-            font-weight: bold;
-        }
-
-        .settings-row {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 15px 0;
-            border-bottom: 1px solid #ddd;
-        }
-
-        /* ================= RESPONSIVE ================= */
-
+        /* Responsive */
         @media (max-width: 768px) {
 
-            .main-container {
+            .profile-container {
                 flex-direction: column;
                 padding: 15px;
             }
 
-            .left-sidebar {
+            .sidebar {
                 width: 100%;
-                min-width: 100%;
             }
 
-            .profile-box {
+            .profile-info {
                 flex-direction: column;
-                text-align: center;
+                align-items: flex-start;
             }
 
             .summary-grid {
                 grid-template-columns: 1fr;
             }
-
         }
-
     </style>
 </head>
 
-
 <body>
 
-
-    <!-- ================= NAVBAR ================= -->
-
-    <nav class="navbar">
-
-        <div class="container-fluid d-flex justify-content-between align-items-center">
-
-            <a href="profile.html" class="navbar-brand">
-                spin<span>ny</span>
-            </a>
-
-            <div class="profile-icon">
-                <i class="bi bi-person-fill"></i>
-            </div>
-
-        </div>
-
-    </nav>
-
-
-    <!-- ================= MAIN CONTAINER ================= -->
-
-    <div class="main-container">
-
-
-        <!-- ================= LEFT SIDEBAR ================= -->
-
-        <aside class="left-sidebar">
-
-            <div class="sidebar-title">
-                My Account
-            </div>
-
-
-            <!-- Dashboard -->
-
-            <button
-                class="menu-btn active"
-                onclick="showSection('dashboard', this)">
-
-                <i class="bi bi-grid"></i>
-
-                <span>Dashboard</span>
-
-            </button>
-
-
-            <!-- Personal Details -->
-
-            <button
-                class="menu-btn"
-                onclick="showSection('personal', this)">
-
-                <i class="bi bi-person"></i>
-
-                <span>Personal Details</span>
-
-            </button>
-
-
-            <!-- IMPORTANT:
-                 Favourite now opens favourite.html -->
-
-            <a
-                href="favourite.html"
-                class="menu-btn">
-
-                <i class="bi bi-heart-fill"></i>
-
-                <span>Favourite</span>
-
-            </a>
-
-
-            <!-- Recently Viewed -->
-
-            <button
-                class="menu-btn"
-                onclick="showSection('recent', this)">
-
-                <i class="bi bi-eye"></i>
-
-                <span>Recently Viewed</span>
-
-            </button>
-
-
-            <!-- Test Drive -->
-
-            <button
-                class="menu-btn"
-                onclick="showSection('testdrive', this)">
-
-                <i class="bi bi-calendar3"></i>
-
-                <span>Test Drive Booking</span>
-
-            </button>
-
-
-            <!-- EMI -->
-
-            <button
-                class="menu-btn"
-                onclick="showSection('emi', this)">
-
-                <i class="bi bi-calculator"></i>
-
-                <span>EMI Calculation</span>
-
-            </button>
-
-
-            <!-- Settings -->
-
-            <button
-                class="menu-btn"
-                onclick="showSection('settings', this)">
-
-                <i class="bi bi-gear"></i>
-
-                <span>Settings</span>
-
-            </button>
-
-
-            <!-- Logout -->
-
-            <button
-                class="menu-btn"
-                onclick="logout()">
-
-                <i class="bi bi-box-arrow-right"></i>
-
-                <span>Logout</span>
-
-            </button>
-
-        </aside>
-
-
-
-        <!-- ================= RIGHT CONTENT ================= -->
-
-        <main class="right-content">
-
-
-            <!-- ================= DASHBOARD ================= -->
-
-            <section
-                id="dashboard"
-                class="content-section">
-
-                <h2 class="section-title">
-                    My Profile
-                </h2>
-
-
-                <!-- Profile -->
-
-                <div class="profile-box">
-
-                    <div class="profile-photo">
-
-                        <i class="bi bi-person-fill"></i>
-
-                    </div>
-
-
-                    <div class="profile-details">
-
-                        <h2 id="profileName">
-                            Pooja B
-                        </h2>
-
-                        <p>
-                            <i class="bi bi-envelope"></i>
-
-                            <span id="profileEmail">
-                                pooja@gmail.com
-                            </span>
-                        </p>
-
-                        <p>
-                            <i class="bi bi-telephone"></i>
-
-                            <span id="profilePhone">
-                                9876543210
-                            </span>
-                        </p>
-
-                        <p>
-                            <i class="bi bi-geo-alt"></i>
-
-                            <span id="profileLocation">
-                                Bangalore
-                            </span>
-                        </p>
-
-
-                        <button
-                            class="edit-btn"
-                            onclick="editProfile()">
-
-                            <i class="bi bi-pencil"></i>
-
-                            Edit Profile
-
-                        </button>
-
-                    </div>
-
+<!-- NAVBAR -->
+<nav class="navbar navbar-dark">
+    <div class="container-fluid px-4">
+        <a class="navbar-brand" href="#">
+            <span>Spinny</span> Profile
+        </a>
+    </div>
+</nav>
+
+
+<!-- MAIN CONTAINER -->
+<div class="profile-container">
+
+    <!-- LEFT SIDEBAR -->
+    <aside class="sidebar">
+
+        <h4>My Account</h4>
+
+        <button
+            class="menu-btn active"
+            onclick="showSection('dashboard', this)"
+        >
+            <i class="bi bi-speedometer2"></i>
+            <span>Dashboard</span>
+        </button>
+
+        <button
+            class="menu-btn"
+            onclick="showSection('personal', this)"
+        >
+            <i class="bi bi-person"></i>
+            <span>Personal Details</span>
+        </button>
+
+        <!-- FAVOURITE -->
+        <a
+            href="favourite.html"
+            class="menu-btn"
+        >
+            <i class="bi bi-heart-fill favourite-icon"></i>
+            <span>Favourite</span>
+        </a>
+
+        <!-- RECENTLY VIEWED -->
+        <a
+            href="recently-viewed.html"
+            class="menu-btn"
+        >
+            <i class="bi bi-eye eye-icon"></i>
+            <span>Recently Viewed</span>
+        </a>
+
+        <button
+            class="menu-btn"
+            onclick="showSection('testdrive', this)"
+        >
+            <i class="bi bi-calendar3 test-icon"></i>
+            <span>Test Drive Booking</span>
+        </button>
+
+        <button
+            class="menu-btn"
+            onclick="showSection('emi', this)"
+        >
+            <i class="bi bi-calculator emi-icon"></i>
+            <span>EMI Calculation</span>
+        </button>
+
+        <button
+            class="menu-btn"
+            onclick="showSection('settings', this)"
+        >
+            <i class="bi bi-gear"></i>
+            <span>Settings</span>
+        </button>
+
+        <button
+            class="menu-btn"
+            onclick="logout()"
+        >
+            <i class="bi bi-box-arrow-right"></i>
+            <span>Logout</span>
+        </button>
+
+    </aside>
+
+
+    <!-- RIGHT CONTENT -->
+    <main class="content-area">
+
+        <!-- DASHBOARD -->
+        <section
+            id="dashboard"
+            class="content-section"
+        >
+
+            <h2 class="section-title">
+                My Profile
+            </h2>
+
+            <!-- PROFILE INFORMATION -->
+            <div class="profile-info">
+
+                <div class="profile-image">
+                    <i class="bi bi-person-fill"></i>
                 </div>
 
+                <div class="profile-details">
 
-                <!-- Quick Summary -->
-
-                <div class="summary-title">
-                    Quick Summary
-                </div>
-
-
-                <div class="summary-grid">
-
-
-                    <!-- Favourite -->
-
-                    <div
-                        class="summary-card"
-                        onclick="window.location.href='favourite.html'"
-                        style="cursor:pointer;">
-
-                        <div class="summary-icon favourite-icon">
-
-                            <i class="bi bi-heart-fill"></i>
-
-                        </div>
-
-                        <div>
-
-                            <h5>
-                                Favourite
-                            </h5>
-
-                            <p>
-                                Your liked cars
-                            </p>
-
-                        </div>
-
-                    </div>
-
-
-
-                    <!-- Recently Viewed -->
-
-                    <div
-                        class="summary-card"
-                        onclick="showSection('recent')"
-                        style="cursor:pointer;">
-
-                        <div class="summary-icon recent-icon">
-
-                            <i class="bi bi-eye"></i>
-
-                        </div>
-
-                        <div>
-
-                            <h5>
-                                Recently Viewed
-                            </h5>
-
-                            <p>
-                                Cars you viewed
-                            </p>
-
-                        </div>
-
-                    </div>
-
-
-
-                    <!-- Test Drive -->
-
-                    <div
-                        class="summary-card"
-                        onclick="showSection('testdrive')"
-                        style="cursor:pointer;">
-
-                        <div class="summary-icon testdrive-icon">
-
-                            <i class="bi bi-calendar3"></i>
-
-                        </div>
-
-                        <div>
-
-                            <h5>
-                                Test Drive
-                            </h5>
-
-                            <p>
-                                Book a test drive
-                            </p>
-
-                        </div>
-
-                    </div>
-
-
-
-                    <!-- EMI -->
-
-                    <div
-                        class="summary-card"
-                        onclick="showSection('emi')"
-                        style="cursor:pointer;">
-
-                        <div class="summary-icon emi-icon">
-
-                            <i class="bi bi-calculator"></i>
-
-                        </div>
-
-                        <div>
-
-                            <h5>
-                                EMI Calculation
-                            </h5>
-
-                            <p>
-                                Calculate your EMI
-                            </p>
-
-                        </div>
-
-                    </div>
-
-                </div>
-
-            </section>
-
-
-
-            <!-- ================= PERSONAL DETAILS ================= -->
-
-            <section
-                id="personal"
-                class="content-section d-none">
-
-                <h2 class="section-title">
-                    Personal Details
-                </h2>
-
-                <div class="info-card">
-
-                    <h5>
-                        Full Name
-                    </h5>
-
-                    <p id="personalName">
+                    <h2 id="profileName">
                         Pooja B
-                    </p>
-
-                </div>
-
-
-                <div class="info-card">
-
-                    <h5>
-                        Email
-                    </h5>
-
-                    <p id="personalEmail">
-                        pooja@gmail.com
-                    </p>
-
-                </div>
-
-
-                <div class="info-card">
-
-                    <h5>
-                        Mobile Number
-                    </h5>
-
-                    <p id="personalPhone">
-                        9876543210
-                    </p>
-
-                </div>
-
-
-                <div class="info-card">
-
-                    <h5>
-                        Location
-                    </h5>
-
-                    <p id="personalLocation">
-                        Bangalore
-                    </p>
-
-                </div>
-
-            </section>
-
-
-
-            <!-- ================= RECENTLY VIEWED ================= -->
-
-            <section
-                id="recent"
-                class="content-section d-none">
-
-                <h2 class="section-title">
-
-                    <i
-                        class="bi bi-eye"
-                        style="color:#1479e8;">
-                    </i>
-
-                    Recently Viewed
-
-                </h2>
-
-                <div class="info-card">
-
-                    <h5>
-                        No recently viewed cars
-                    </h5>
+                    </h2>
 
                     <p>
-                        Cars that you view will appear here.
+                        <i class="bi bi-envelope-fill"></i>
+                        <span id="profileEmail">
+                            pooja@gmail.com
+                        </span>
                     </p>
-
-                </div>
-
-            </section>
-
-
-
-            <!-- ================= TEST DRIVE ================= -->
-
-            <section
-                id="testdrive"
-                class="content-section d-none">
-
-                <h2 class="section-title">
-
-                    <i
-                        class="bi bi-calendar3"
-                        style="color:#198754;">
-                    </i>
-
-                    Test Drive Booking
-
-                </h2>
-
-                <div class="info-card">
-
-                    <h5>
-                        No Test Drive Bookings
-                    </h5>
 
                     <p>
-                        Your test drive bookings will appear here.
+                        <i class="bi bi-telephone-fill"></i>
+                        <span id="profilePhone">
+                            9876543210
+                        </span>
                     </p>
-
-                </div>
-
-            </section>
-
-
-
-            <!-- ================= EMI ================= -->
-
-            <section
-                id="emi"
-                class="content-section d-none">
-
-                <h2 class="section-title">
-
-                    <i
-                        class="bi bi-calculator"
-                        style="color:#7b2cbf;">
-                    </i>
-
-                    EMI Calculation
-
-                </h2>
-
-
-                <div class="info-card">
-
-                    <h5>
-                        EMI Calculator
-                    </h5>
 
                     <p>
-                        Calculate your monthly car EMI here.
+                        <i class="bi bi-geo-alt-fill"></i>
+                        <span id="profileLocation">
+                            Bangalore
+                        </span>
                     </p>
-
-
-                    <div class="row g-3 mt-2">
-
-                        <div class="col-md-4">
-
-                            <label class="form-label">
-                                Car Price
-                            </label>
-
-                            <input
-                                type="number"
-                                id="carPrice"
-                                class="form-control"
-                                placeholder="Enter price">
-
-                        </div>
-
-
-                        <div class="col-md-4">
-
-                            <label class="form-label">
-                                Interest Rate (%)
-                            </label>
-
-                            <input
-                                type="number"
-                                id="interestRate"
-                                class="form-control"
-                                placeholder="Interest rate">
-
-                        </div>
-
-
-                        <div class="col-md-4">
-
-                            <label class="form-label">
-                                Loan Tenure (Years)
-                            </label>
-
-                            <input
-                                type="number"
-                                id="loanTenure"
-                                class="form-control"
-                                placeholder="Years">
-
-                        </div>
-
-                    </div>
-
 
                     <button
-                        class="edit-btn mt-3"
-                        onclick="calculateEMI()">
-
-                        Calculate EMI
-
+                        class="edit-btn"
+                        onclick="editProfile()"
+                    >
+                        <i class="bi bi-pencil"></i>
+                        Edit Profile
                     </button>
 
-
-                    <h4 class="mt-4">
-                        Monthly EMI:
-                        ₹<span id="emiResult">0</span>
-                    </h4>
-
                 </div>
 
-            </section>
+            </div>
 
 
+            <!-- QUICK SUMMARY -->
+            <h4 class="summary-title">
+                Quick Summary
+            </h4>
 
-            <!-- ================= SETTINGS ================= -->
+            <div class="summary-grid">
 
-            <section
-                id="settings"
-                class="content-section d-none">
+                <!-- Favourite -->
+                <div
+                    class="summary-card"
+                    onclick="window.location.href='favourite.html'"
+                    style="cursor:pointer;"
+                >
 
-                <h2 class="section-title">
-                    Settings
-                </h2>
+                    <div class="summary-icon favourite-icon">
+                        <i class="bi bi-heart-fill"></i>
+                    </div>
 
+                    <h5>Favourite Cars</h5>
 
-                <div class="settings-row">
-
-                    <span>
-                        Email Notifications
-                    </span>
-
-                    <input
-                        type="checkbox"
-                        checked>
+                    <p>
+                        View your favourite cars
+                    </p>
 
                 </div>
 
 
-                <div class="settings-row">
+                <!-- Recently Viewed -->
+                <div
+                    class="summary-card"
+                    onclick="window.location.href='recently-viewed.html'"
+                    style="cursor:pointer;"
+                >
 
-                    <span>
-                        SMS Notifications
-                    </span>
+                    <div class="summary-icon eye-icon">
+                        <i class="bi bi-eye"></i>
+                    </div>
 
-                    <input
-                        type="checkbox">
+                    <h5>Recently Viewed</h5>
+
+                    <p>
+                        View recently viewed cars
+                    </p>
+
+                </div>
+
+
+                <!-- Test Drive -->
+                <div
+                    class="summary-card"
+                    onclick="showSection('testdrive')"
+                    style="cursor:pointer;"
+                >
+
+                    <div class="summary-icon test-icon">
+                        <i class="bi bi-calendar3"></i>
+                    </div>
+
+                    <h5>Test Drive</h5>
+
+                    <p>
+                        Manage your bookings
+                    </p>
 
                 </div>
 
 
-                <div class="settings-row">
+                <!-- EMI -->
+                <div
+                    class="summary-card"
+                    onclick="showSection('emi')"
+                    style="cursor:pointer;"
+                >
 
-                    <span>
-                        Dark Mode
-                    </span>
+                    <div class="summary-icon emi-icon">
+                        <i class="bi bi-calculator"></i>
+                    </div>
 
-                    <input
-                        type="checkbox">
+                    <h5>EMI Calculator</h5>
+
+                    <p>
+                        Calculate your car EMI
+                    </p>
 
                 </div>
 
-            </section>
+            </div>
+
+        </section>
 
 
-        </main>
+        <!-- PERSONAL DETAILS -->
+        <section
+            id="personal"
+            class="content-section d-none"
+        >
 
-    </div>
+            <h2 class="section-title">
+                Personal Details
+            </h2>
 
+            <p>
+                <strong>Name:</strong>
+                <span id="personalName"></span>
+            </p>
 
+            <p>
+                <strong>Email:</strong>
+                <span id="personalEmail"></span>
+            </p>
 
-    <!-- ================= JAVASCRIPT ================= -->
+            <p>
+                <strong>Mobile:</strong>
+                <span id="personalPhone"></span>
+            </p>
 
-    <script>
+            <p>
+                <strong>Location:</strong>
+                <span id="personalLocation"></span>
+            </p>
 
+            <button
+                class="edit-btn"
+                onclick="editProfile()"
+            >
+                <i class="bi bi-pencil"></i>
+                Edit Profile
+            </button>
 
-        /* ================= SHOW SECTION ================= */
-
-        function showSection(sectionId, button) {
-
-            const sections = [
-                "dashboard",
-                "personal",
-                "recent",
-                "testdrive",
-                "emi",
-                "settings"
-            ];
-
-
-            sections.forEach(function(section) {
-
-                const element =
-                    document.getElementById(section);
-
-                if (element) {
-
-                    element.classList.add("d-none");
-
-                }
-
-            });
-
-
-            const selectedSection =
-                document.getElementById(sectionId);
+        </section>
 
 
-            if (selectedSection) {
+        <!-- TEST DRIVE -->
+        <section
+            id="testdrive"
+            class="content-section d-none"
+        >
 
-                selectedSection.classList.remove("d-none");
+            <h2 class="section-title">
+                Test Drive Booking
+            </h2>
 
-            }
+            <div class="alert alert-success">
+                <i class="bi bi-calendar3"></i>
+                Your test drive bookings will appear here.
+            </div>
 
-
-            /* Update active sidebar button */
-
-            document
-                .querySelectorAll(".menu-btn")
-                .forEach(function(btn) {
-
-                    btn.classList.remove("active");
-
-                });
+        </section>
 
 
-            if (button) {
+        <!-- EMI -->
+        <section
+            id="emi"
+            class="content-section d-none"
+        >
 
-                button.classList.add("active");
+            <h2 class="section-title">
+                EMI Calculation
+            </h2>
 
-            }
+            <div class="alert alert-info">
+                <i class="bi bi-calculator"></i>
+                EMI calculator section.
+            </div>
+
+        </section>
+
+
+        <!-- SETTINGS -->
+        <section
+            id="settings"
+            class="content-section d-none"
+        >
+
+            <h2 class="section-title">
+                Settings
+            </h2>
+
+            <div class="alert alert-secondary">
+                Account settings will appear here.
+            </div>
+
+        </section>
+
+    </main>
+
+</div>
+
+
+<!-- BOOTSTRAP JS -->
+<script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js">
+</script>
+
+
+<script>
+
+    /* ----------------------------------
+       LOAD USER DATA
+    ---------------------------------- */
+
+    function loadUserData() {
+
+        const name =
+            localStorage.getItem("userName") || "Pooja B";
+
+        const email =
+            localStorage.getItem("userEmail") || "pooja@gmail.com";
+
+        const phone =
+            localStorage.getItem("userPhone") || "9876543210";
+
+        const location =
+            localStorage.getItem("userLocation") || "Bangalore";
+
+
+        document.getElementById("profileName").textContent =
+            name;
+
+        document.getElementById("profileEmail").textContent =
+            email;
+
+        document.getElementById("profilePhone").textContent =
+            phone;
+
+        document.getElementById("profileLocation").textContent =
+            location;
+
+
+        document.getElementById("personalName").textContent =
+            name;
+
+        document.getElementById("personalEmail").textContent =
+            email;
+
+        document.getElementById("personalPhone").textContent =
+            phone;
+
+        document.getElementById("personalLocation").textContent =
+            location;
+    }
+
+
+    /* ----------------------------------
+       SHOW SECTION
+    ---------------------------------- */
+
+    function showSection(sectionId, button) {
+
+        const sections =
+            document.querySelectorAll(".content-section");
+
+        sections.forEach(function(section) {
+
+            section.classList.add("d-none");
+
+        });
+
+
+        const selectedSection =
+            document.getElementById(sectionId);
+
+        if (selectedSection) {
+
+            selectedSection.classList.remove("d-none");
 
         }
 
 
+        /* Remove active class */
 
-        /* ================= LOAD USER DATA ================= */
+        const menuButtons =
+            document.querySelectorAll(".menu-btn");
 
-        function loadUserData() {
+        menuButtons.forEach(function(btn) {
 
-            const name =
-                localStorage.getItem("userName")
-                || "Pooja B";
+            btn.classList.remove("active");
 
-            const email =
-                localStorage.getItem("userEmail")
-                || "pooja@gmail.com";
-
-            const phone =
-                localStorage.getItem("userPhone")
-                || "9876543210";
-
-            const location =
-                localStorage.getItem("userLocation")
-                || "Bangalore";
+        });
 
 
-            document.getElementById("profileName")
-                .textContent = name;
+        /* Add active class */
 
-            document.getElementById("profileEmail")
-                .textContent = email;
+        if (button) {
 
-            document.getElementById("profilePhone")
-                .textContent = phone;
-
-            document.getElementById("profileLocation")
-                .textContent = location;
-
-
-            document.getElementById("personalName")
-                .textContent = name;
-
-            document.getElementById("personalEmail")
-                .textContent = email;
-
-            document.getElementById("personalPhone")
-                .textContent = phone;
-
-            document.getElementById("personalLocation")
-                .textContent = location;
+            button.classList.add("active");
 
         }
 
+    }
 
 
-        /* ================= EDIT PROFILE ================= */
+    /* ----------------------------------
+       EDIT PROFILE
+    ---------------------------------- */
 
-        function editProfile() {
+    function editProfile() {
 
-            let name =
-                prompt(
-                    "Enter your name:",
-                    document.getElementById("profileName").textContent
-                );
+        let currentName =
+            localStorage.getItem("userName") || "Pooja B";
 
+        let currentEmail =
+            localStorage.getItem("userEmail") || "pooja@gmail.com";
 
-            if (name === null) {
-                return;
-            }
+        let currentPhone =
+            localStorage.getItem("userPhone") || "9876543210";
 
-
-            let email =
-                prompt(
-                    "Enter your email:",
-                    document.getElementById("profileEmail").textContent
-                );
+        let currentLocation =
+            localStorage.getItem("userLocation") || "Bangalore";
 
 
-            if (email === null) {
-                return;
-            }
+        const newName =
+            prompt("Enter your name:", currentName);
+
+        if (newName === null) {
+            return;
+        }
 
 
-            let phone =
-                prompt(
-                    "Enter your mobile number:",
-                    document.getElementById("profilePhone").textContent
-                );
+        const newEmail =
+            prompt("Enter your email:", currentEmail);
+
+        if (newEmail === null) {
+            return;
+        }
 
 
-            if (phone === null) {
-                return;
-            }
+        const newPhone =
+            prompt("Enter your mobile number:", currentPhone);
+
+        if (newPhone === null) {
+            return;
+        }
 
 
-            let location =
-                prompt(
-                    "Enter your location:",
-                    document.getElementById("profileLocation").textContent
-                );
+        const newLocation =
+            prompt("Enter your location:", currentLocation);
+
+        if (newLocation === null) {
+            return;
+        }
 
 
-            if (location === null) {
-                return;
-            }
+        localStorage.setItem(
+            "userName",
+            newName
+        );
+
+        localStorage.setItem(
+            "userEmail",
+            newEmail
+        );
+
+        localStorage.setItem(
+            "userPhone",
+            newPhone
+        );
+
+        localStorage.setItem(
+            "userLocation",
+            newLocation
+        );
 
 
-            /* Save to localStorage */
+        loadUserData();
 
-            localStorage.setItem(
-                "userName",
-                name
-            );
-
-            localStorage.setItem(
-                "userEmail",
-                email
-            );
-
-            localStorage.setItem(
-                "userPhone",
-                phone
-            );
-
-            localStorage.setItem(
-                "userLocation",
-                location
-            );
+        alert("Profile updated successfully!");
+    }
 
 
-            /* Update page */
+    /* ----------------------------------
+       LOGOUT
+    ---------------------------------- */
+
+    function logout() {
+
+        const confirmLogout =
+            confirm("Are you sure you want to logout?");
+
+        if (!confirmLogout) {
+            return;
+        }
+
+
+        localStorage.removeItem("isLoggedIn");
+
+        window.location.href =
+            "login.html";
+    }
+
+
+    /* ----------------------------------
+       PAGE LOAD
+    ---------------------------------- */
+
+    document.addEventListener(
+        "DOMContentLoaded",
+        function() {
 
             loadUserData();
 
         }
+    );
 
-
-
-        /* ================= EMI CALCULATOR ================= */
-
-        function calculateEMI() {
-
-            const price =
-                parseFloat(
-                    document.getElementById("carPrice").value
-                );
-
-            const interest =
-                parseFloat(
-                    document.getElementById("interestRate").value
-                );
-
-            const years =
-                parseFloat(
-                    document.getElementById("loanTenure").value
-                );
-
-
-            if (
-                isNaN(price) ||
-                isNaN(interest) ||
-                isNaN(years) ||
-                price <= 0 ||
-                interest <= 0 ||
-                years <= 0
-            ) {
-
-                alert(
-                    "Please enter valid EMI details."
-                );
-
-                return;
-
-            }
-
-
-            const monthlyInterest =
-                interest / 12 / 100;
-
-            const months =
-                years * 12;
-
-
-            const emi =
-                (
-                    price *
-                    monthlyInterest *
-                    Math.pow(
-                        1 + monthlyInterest,
-                        months
-                    )
-                )
-                /
-                (
-                    Math.pow(
-                        1 + monthlyInterest,
-                        months
-                    ) - 1
-                );
-
-
-            document.getElementById("emiResult")
-                .textContent =
-                Math.round(emi).toLocaleString("en-IN");
-
-        }
-
-
-
-        /* ================= LOGOUT ================= */
-
-        function logout() {
-
-            const confirmLogout =
-                confirm(
-                    "Are you sure you want to logout?"
-                );
-
-
-            if (confirmLogout) {
-
-                localStorage.removeItem(
-                    "isLoggedIn"
-                );
-
-                window.location.href =
-                    "login.html";
-
-            }
-
-        }
-
-
-
-        /* ================= PAGE LOAD ================= */
-
-        document.addEventListener(
-            "DOMContentLoaded",
-            function() {
-
-                loadUserData();
-
-            }
-        );
-
-    </script>
-
-
-    <!-- Bootstrap JS -->
-
-    <script
-        src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js">
-    </script>
+</script>
 
 </body>
-
 </html>
